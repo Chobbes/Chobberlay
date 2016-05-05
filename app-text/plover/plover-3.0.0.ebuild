@@ -19,8 +19,10 @@ KEYWORDS="~amd64 ~x86"
 IUSE="serial"
 
 RDEPEND="${PYTHON_DEPS}
+         $(python_gen_any_dep '
          >=dev-python/wxpython-3.0[${PYTHON_USEDEP}]
-         dev-python/python-xlib[${PYTHON_USEDEP}]"
+         dev-python/python-xlib[${PYTHON_USEDEP}]
+         serial? dev-python/pyserial[${PYTHON_USEDEP}] )'"
 DEPEND="${RDEPEND}"
 
 src_install() {
