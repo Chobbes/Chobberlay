@@ -16,10 +16,13 @@ SRC_URI="https://github.com/openstenoproject/plover/archive/v${PV}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="acl bzip2 libressl lzma cpu_flags_x86_sse2 xattr"
+IUSE="serial"
 
 RDEPEND="${PYTHON_DEPS}
-         >=dev-python/wxpython-3.0"
+         >=dev-python/wxpython-3.0[${PYTHON_USEDEP}]
+         dev-python/python-xlib[${PYTHON_USEDEP}]
+         serial? dev-python/pyserial[${PYTHON_USEDEP}]
+        "
 DEPEND="${RDEPEND}"
 
 src_install() {
