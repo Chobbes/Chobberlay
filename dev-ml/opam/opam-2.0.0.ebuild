@@ -36,7 +36,7 @@ DEPEND="${RDEPEND}
 "
 
 src_prepare() {
-	epatch "${FILESDIR}/stublibs.patch"
+	# epatch "${FILESDIR}/stublibs.patch"
 }
 
 src_compile() {
