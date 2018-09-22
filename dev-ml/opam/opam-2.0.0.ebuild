@@ -35,10 +35,6 @@ DEPEND="${RDEPEND}
 	test? ( dev-vcs/git )
 "
 
-src_prepare() {
-	# epatch "${FILESDIR}/stublibs.patch"
-}
-
 src_compile() {
 	emake -j1
 	cd doc
