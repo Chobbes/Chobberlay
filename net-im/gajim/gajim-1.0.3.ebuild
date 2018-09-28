@@ -1,14 +1,16 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite,xml"
+DISTUTILS_SINGLE_IMPL=1
+DISTUTILS_IN_SOURCE_BUILD=1
 
-AUTOTOOLS_AUTORECONF=true
+#AUTOTOOLS_AUTORECONF=true
 
-inherit autotools-utils gnome2-utils python-r1 versionator xdg-utils
+inherit gnome2-utils distutils-r1 versionator xdg-utils
 
 MY_PV=${PV/_/-}
 MY_P="${PN}-${MY_PV}"
@@ -73,45 +75,16 @@ RESTRICT="test"
 
 S="${WORKDIR}"/${MY_P}
 
-src_prepare() {
-	autotools-utils_src_prepare
-	python_copy_sources
+python_prepare_all() {
+	distutils-r1_python_prepare_all
 }
 
-src_configure() {
-	configuration() {
-		local myeconfargs=(
-			$(use_enable nls)
-			$(use_with X x)
-			--docdir="/usr/share/doc/${PF}"
-			--libdir="$(python_get_sitedir)"
-			--enable-site-packages
-		)
-		run_in_build_dir autotools-utils_src_configure
-	}
-	python_foreach_impl configuration
+python_compile_all() {
+	use doc && emake -C doc html
 }
 
-src_compile() {
-	compilation() {
-		run_in_build_dir autotools-utils_src_compile
-	}
-	python_foreach_impl compilation
-}
-
-src_test() {
-	testing() {
-		run_in_build_dir ${PYTHON} test/runtests.py --verbose 3 || die
-	}
-	python_foreach_impl testing
-}
-
-src_install() {
-	installation() {
-		run_in_build_dir autotools-utils_src_install
-		python_optimize
-	}
-	python_foreach_impl installation
+python_install_all() {
+	distutils-r1_python_install_all
 }
 
 pkg_postinst() {
