@@ -23,7 +23,7 @@ IUSE="+libnotify +gpg +otr +omemo +autoaway +tray"
 
 DEPEND="dev-libs/libstrophe
 	sys-libs/ncurses
-	dev-libs/glib
+	>=dev-libs/glib-2.58
 	net-misc/curl
 	sys-libs/readline
 	libnotify? ( x11-libs/libnotify )
@@ -37,3 +37,8 @@ DEPEND="dev-libs/libstrophe
 	)"
 RDEPEND="${DEPEND}"
 BDEPEND="${DEPEND}"
+
+src_prepare() {
+	default
+	./bootstrap.sh
+}
