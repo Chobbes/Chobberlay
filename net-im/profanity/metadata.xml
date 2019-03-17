@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>hobbes@ualberta.ca</email>
+		<name>Calvin beck</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/boothj5/profanity/issues</bugs-to>
+		<remote-id type="github">boothj5/profanity</remote-id>
+	</upstream>
+	<use>
+		<flag name="autoaway">Enable desktop idle time autoaway support</flag>
+		<flag name="gpg">Enable PGP encryption</flag>
+		<flag name="otr">Enable OTR encryption</flag>
+		<flag name="tray">Enable desktop tray icon support</flag>
+	</use>
+</pkgmetadata>
