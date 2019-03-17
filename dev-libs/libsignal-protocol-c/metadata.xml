@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>hobbes@ualberta.ca</email>
+		<name>Calvin beck</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/signalapp/libsignal-protocol-c/issues</bugs-to>
+		<remote-id type="github">signalapp/libsignal-protocol-c</remote-id>
+	</upstream>
+	<use>
+		<flag name="coverage">Include lcov coverage tool.</flag>
+	</use>
+</pkgmetadata>
