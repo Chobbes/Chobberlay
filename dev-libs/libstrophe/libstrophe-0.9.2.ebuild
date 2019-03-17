@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="dev-libs/openssl
-        dev-libs/expat"
-RDEPEND="${DEPEND}"
-BDEPEND=""
+	dev-libs/expat"
 
+RDEPEND="${DEPEND}"
+BDEPEND="${DEPEND}"
