@@ -30,7 +30,7 @@ DEPEND="dev-libs/libstrophe
 	gpg? ( app-crypt/gpgme )
 	otr? ( net-libs/libotr )
 	autoaway? ( x11-libs/libXScrnSaver )
-	tray? ( x11-libs/gtk )
+	tray? ( x11-libs/gtk+ )
         omemo? (
 		dev-libs/libgcrypt
 		>=dev-libs/libsignal-protocol-c-2.3.2
