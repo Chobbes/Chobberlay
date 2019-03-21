@@ -1,25 +1,19 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{5,6,7} )
 PYTHON_REQ_USE="sqlite,xml"
-DISTUTILS_SINGLE_IMPL=1
-DISTUTILS_IN_SOURCE_BUILD=1
 
-#AUTOTOOLS_AUTORECONF=true
-
-inherit gnome2-utils distutils-r1 versionator xdg-utils
+inherit distutils-r1
 
 MY_PV=${PV/_/-}
 MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="Jabber client written in PyGTK"
 HOMEPAGE="https://www.gajim.org/"
-SRC_URI="
-	https://www.gajim.org/downloads/$(get_version_component_range 1-2)/${MY_P}.tar.bz2"
-#	test? ( https://dev.gentoo.org/~jlec/distfiles/${PN}-tests-${PV}.tar.xz )"
+SRC_URI="https://gajim.org/downloads/1.1/gajim-1.1.2.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -43,7 +37,7 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	dev-python/pyasn1[${PYTHON_USEDEP}]
 	>=dev-python/pyopenssl-0.14[${PYTHON_USEDEP}]
-	>=dev-python/python-nbxmpp-0.6.1[${PYTHON_USEDEP}]
+	>=dev-python/python-nbxmpp-0.6.9[${PYTHON_USEDEP}]
 	crypt? ( >=dev-python/python-gnupg-0.4.0[${PYTHON_USEDEP}] )
 	dbus? (
 		dev-python/dbus-python[${PYTHON_USEDEP}]
@@ -70,29 +64,3 @@ RDEPEND="${COMMON_DEPEND}
 			)
 		)
 	xhtml? ( dev-python/docutils[${PYTHON_USEDEP}] )"
-
-RESTRICT="test"
-
-S="${WORKDIR}"/${MY_P}
-
-python_prepare_all() {
-	distutils-r1_python_prepare_all
-}
-
-python_compile_all() {
-	use doc && emake -C doc html
-}
-
-python_install_all() {
-	distutils-r1_python_install_all
-}
-
-pkg_postinst() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
-}
